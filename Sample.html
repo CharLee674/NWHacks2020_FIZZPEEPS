@@ -10,7 +10,27 @@
             $('#data').html('');
             $('#data2').html('');
             const textareaValue = $('textarea#textYouWant').val();
-            gapi.client.init({
+
+            // 
+            fetch("/post", {
+              method: 'POST',
+              headers: {
+                // What kind of data
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                text: textareaValue
+              })
+            }).then(function(data){
+              //
+              Console.log("Working");
+            }).catch(function(error){
+              Console.error();
+            });
+            
+            
+            /*gapi.client.init({
               'apiKey': 'AIzaSyAW_lwXLI2bNV_sAz-VT9I46f4qMTFMVG8',
               'discoveryDocs': ['https://language.googleapis.com/$discovery/rest?version=v1']
             }).then(function() {
@@ -26,11 +46,11 @@
               $('#data').append(resp.result.documentSentiment.magnitude);
               $('#data2').append(resp.result.documentSentiment.score);
             }, function(reason) {
-              console.log('Error: ' + reason.result.error.message);
+              console.log('Error: ' + JSON.stringify(reason));
             });
         }
 
-        function start() {
+        /*function start() {
             gapi.client.init({
               'apiKey': 'AIzaSyAW_lwXLI2bNV_sAz-VT9I46f4qMTFMVG8',
               'discoveryDocs': ['https://language.googleapis.com/$discovery/rest?version=v1']
@@ -47,10 +67,10 @@
               $('#data').append(resp.result.documentSentiment.magnitude);
               $('#data2').append(resp.result.documentSentiment.score);
             }, function(reason) {
-              console.log('Error: ' + reason.result.error.message);
+              console.log('Error: ' + reason);
             });
-          };
-          gapi.load('client', start);
+          };*/
+          /*gapi.load('client', doSomething);*/
     </script>
 
 </head>
