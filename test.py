@@ -31,7 +31,37 @@ def getSentiment(entry):
 
     print('Text: {}'.format(text))
     print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
-    return sentiment.score
+    return sentiment
+
+"""def getMagnitude(entry):
+    # Instantiates a client
+    client = language.LanguageServiceClient()
+
+    # The text to analyze
+    f = open("journal1.txt", "w")
+    f.write(entry)
+
+    path = 'journal1.txt'
+    f = open(path)
+    text = f.read()
+
+    document = types.Document(
+    content=text,
+    type=enums.Document.Type.PLAIN_TEXT)
+
+    # Detects the sentiment of the text
+    sentiment = client.analyze_sentiment(document=document).document_sentiment
+    f = open("sentiments.txt", "a")
+    f.write(str(sentiment.score) + "\n")
+    f.close()
+
+    f = open("allJournalEntries.txt", "a")
+    f.write(text + "\n\n")
+    f.close()
+
+    print('Text: {}'.format(text))
+    print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
+    return sentiment.magnitude   """
 
 #this is to analyze the entity sentiment and rank the top ten salience ones.
 def sample_analyze_entity_sentiment(text_content):

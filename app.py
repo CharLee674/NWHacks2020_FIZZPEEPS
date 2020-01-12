@@ -60,8 +60,8 @@ def home():
         plt.plot(xvals, yvals)
         #plt.plot([0, 1, 2, 3], [-1, 5, -3, 4])
 
-        plt.xlabel("x")
-        plt.ylabel("y")
+        plt.xlabel("Time")
+        plt.ylabel("Sentiment Score")
         #plt.show()
         plt.savefig("static/graph.png")
         #copyfile("graph.png", "/static")
@@ -72,8 +72,10 @@ def home():
         #This receives the request from the entry in the page
         #entry = request.form.get("entry")
         #This uses the getSentiment function in test.py in our folder
-       # sentiment = getSentiment(entry)
-        return render_template("index.html", sentiment=sentiment) #this renders the html file inside the templates folder
+        #sentiment = getSentiment(entry)
+        sent = sentiment.score
+        magnitude = sentiment.magnitude
+        return render_template("index.html", sentiment=sent, entry=entry) #this renders the html file inside the templates folder
     if request.method == 'GET': #If the user asks for the webpage
         return render_template("index.html")
 
