@@ -8,12 +8,12 @@ def getSentiment():
     client = language.LanguageServiceClient()
 
     # The text to analyze
-    #strText = u'This was the worst day of my life!'
-    #senti = open('sentiments.txt').read()
 
     path = 'journal1.txt'
     f = open(path)
     text = f.read()
+
+    #text = string
 
     document = types.Document(
         content=text,
@@ -25,5 +25,10 @@ def getSentiment():
     f.write(str(sentiment.score) + "\n")
     f.close()
 
+    f = open("allJournalEntries.txt", "a")
+    f.write(text + "\n\n")
+    f.close()
+
     print('Text: {}'.format(text))
     print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
+return sentiment.score
