@@ -22,7 +22,7 @@ def getSentiment(entry):
     # Detects the sentiment of the text
     sentiment = client.analyze_sentiment(document=document).document_sentiment
     f = open("sentiments.txt", "a")
-    f.write(str(sentiment.score) + "\n")
+    f.write(str(round(sentiment.score, 3)) + "\n")
     f.close()
 
     f = open("allJournalEntries.txt", "a")

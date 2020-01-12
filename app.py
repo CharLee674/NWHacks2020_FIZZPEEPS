@@ -6,6 +6,7 @@ from io import BytesIO
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 from shutil import copyfile
+import numpy as np
 
 #Creates an instance of the Flask app under the name 'app'
 app = Flask(__name__)
@@ -22,6 +23,8 @@ def after_request(response):
 @app.route('/', methods = ['GET', 'POST']) #REST api method usage
 def home():
     if request.method == 'POST': #If the user asks for the results
+        entry = request.form.get("entry")
+        sentiment = getSentiment(entry)
         #Taken from https://matplotlib.org/faq/howto_faq.html#how-to-use-matplotlib-in-a-web-application-server 
         # Generate the figure **without using pyplot**.
         fig = Figure()
@@ -33,7 +36,30 @@ def home():
         # Embed the result in the html output.
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
 
-        plt.plot([0, 1, 2, 3, 4], [0, 3, 5, 9, 11])
+        f = open("sentiments.txt", "r")
+        fileString = f.read()
+        yvalsAsString = fileString.split("\n")
+        yvals = []
+        xvals = []
+        for x in yvalsAsString:
+
+            try:       
+                yvals.append(float(x))
+            except ValueError:
+                break
+
+        
+        for i in range(len(yvals)):
+            xvals.append(i)
+        #xvals = range(len(yvals))
+
+        print(yvals)
+        print(xvals)
+
+        #plt.yticks(np.arange(-1, 1, step=0.2))
+        plt.plot(xvals, yvals)
+        #plt.plot([0, 1, 2, 3], [-1, 5, -3, 4])
+
         plt.xlabel("x")
         plt.ylabel("y")
         #plt.show()
@@ -44,9 +70,9 @@ def home():
         data = "<img src='data:image/png;base64,{}'/>".format(data)
         
         #This receives the request from the entry in the page
-        entry = request.form.get("entry")
+        #entry = request.form.get("entry")
         #This uses the getSentiment function in test.py in our folder
-        sentiment = getSentiment(entry)
+       # sentiment = getSentiment(entry)
         return render_template("index.html", sentiment=sentiment) #this renders the html file inside the templates folder
     if request.method == 'GET': #If the user asks for the webpage
         return render_template("index.html")
