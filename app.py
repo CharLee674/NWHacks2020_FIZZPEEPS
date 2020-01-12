@@ -39,9 +39,6 @@ def home():
     if request.method == 'GET': #If the user asks for the webpage
         return render_template("index.html")
 
-
-
-
 @app.route('/getpost')
 def getpost():
     return "hi"

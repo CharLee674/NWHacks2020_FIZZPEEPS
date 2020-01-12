@@ -8,7 +8,6 @@ def getSentiment(entry):
     client = language.LanguageServiceClient()
 
     # The text to analyze
-
     f = open("journal1.txt", "w")
     f.write(entry)
 
@@ -16,11 +15,9 @@ def getSentiment(entry):
     f = open(path)
     text = f.read()
 
-    #text = string
-
     document = types.Document(
-        content=text,
-        type=enums.Document.Type.PLAIN_TEXT)
+    content=text,
+    type=enums.Document.Type.PLAIN_TEXT)
 
     # Detects the sentiment of the text
     sentiment = client.analyze_sentiment(document=document).document_sentiment
@@ -36,7 +33,7 @@ def getSentiment(entry):
     print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
     return sentiment.score
 
-#this is to analyze the entity
+#this is to analyze the entity sentiment and rank the top ten salience ones.
 def sample_analyze_entity_sentiment(text_content):
     """
     Analyzing Entity Sentiment in a String
@@ -102,9 +99,7 @@ def sample_analyze_entity_sentiment(text_content):
     for entity in entList:
         print(entity.name)
 
-        
         f.write(entity.name + " " + str(entity.salience) + "\n")
-        
 
         count += 1
         if(count == 10):
