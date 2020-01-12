@@ -31,9 +31,9 @@ def getSentiment(entry):
 
     print('Text: {}'.format(text))
     print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
-    return sentiment.score
+    return sentiment
 
- def getMagnitude(entry):
+"""def getMagnitude(entry):
     # Instantiates a client
     client = language.LanguageServiceClient()
 
@@ -61,7 +61,7 @@ def getSentiment(entry):
 
     print('Text: {}'.format(text))
     print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
-    return sentiment.magnitude   
+    return sentiment.magnitude   """
 
 #this is to analyze the entity sentiment and rank the top ten salience ones.
 def sample_analyze_entity_sentiment(text_content):

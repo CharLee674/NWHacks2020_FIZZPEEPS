@@ -47,8 +47,9 @@ def home():
         entry = request.form.get("entry")
         #This uses the getSentiment function in test.py in our folder
         sentiment = getSentiment(entry)
-        magnitude = getMagnitude(entry)
-        return render_template("index.html", sentiment=sentiment, magnitude=magnitude) #this renders the html file inside the templates folder
+        sent = sentiment.score
+        magnitude = sentiment.magnitude
+        return render_template("index.html", sentiment=sent, magnitude=magnitude) #this renders the html file inside the templates folder
     if request.method == 'GET': #If the user asks for the webpage
         return render_template("index.html")
 
