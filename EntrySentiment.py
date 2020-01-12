@@ -24,14 +24,3 @@ class EntrySentiment:
     def getSentiment(self, datetime):
         """Returns the entry at the given datetime and returns a message of 'No log exists at this given time' if not inside"""
         return self.entries.get(datetime, "No log exists at this given time")
-
-
-
-a = EntrySentiment("C")
-date1 = datetime.now()
-sentiment1 = 0.75
-a.insertEntryTime(date1, sentiment1)
-print(a.getSentiment(date1))
-
-    
-
