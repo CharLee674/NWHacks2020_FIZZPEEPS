@@ -27,3 +27,4 @@ def getSentiment():
 
     print('Text: {}'.format(text))
     print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
+    return sentiment.score
