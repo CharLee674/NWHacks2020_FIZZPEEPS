@@ -3,14 +3,21 @@ from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
 
+<<<<<<< HEAD
+def getSentiment(entry):
+=======
 from google.cloud import language_v1
 from google.cloud.language_v1 import enums
 
 def getSentiment():
+>>>>>>> 446cc784fe55f56375d00ae6dbbbc50b9de4f42a
     # Instantiates a client
     client = language.LanguageServiceClient()
 
     # The text to analyze
+
+    f = open("journal1.txt", "w")
+    f.write(entry)
 
     path = 'journal1.txt'
     f = open(path)
