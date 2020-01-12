@@ -1,4 +1,5 @@
 from datetime import datetime 
+import json
 
 class EntrySentiment:
     """Class to represent a journal entry sentiment on a given current time"""
@@ -24,3 +25,6 @@ class EntrySentiment:
     def getSentiment(self, datetime):
         """Returns the entry at the given datetime and returns a message of 'No log exists at this given time' if not inside"""
         return self.entries.get(datetime, "No log exists at this given time")
+
+    def toString(self):
+        return json.dumps(self.entries)

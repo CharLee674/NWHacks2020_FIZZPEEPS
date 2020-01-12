@@ -44,7 +44,7 @@ def sample_analyze_entity_sentiment(text_content):
       text_content The text content to analyze
     """
 
-    client = language_v1.LanguageServiceClient()
+    client = language.LanguageServiceClient()
 
     # text_content = 'Grapes are good. Bananas are bad.'
 
