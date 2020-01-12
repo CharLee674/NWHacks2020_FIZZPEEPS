@@ -55,14 +55,16 @@
           <label class="col-form-label" for="inputDefault"></label>
           <textarea rows = "5" cols = "60" name = "entry" style="height:200px;font-size:14pt;" placeholder="Enter you thoughts below!" ></textarea>
             <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+      </form>
   </div>
 </div>
 
 <div class="split right">
   <div class="centered">
-    <h2>Positivity Rating:</h2>
+    <h2>Mood Rating:</h2>
     <p>{{sentiment}}</p>
+    <h2>Strength of mood:</h2>
+    <p>{{magnitude}}</p>
     <!--<img src={{ url_for('static', filename='chicken-nuggets.jpg') }}> -->
     <img src={{ url_for('static', filename='graph.png') }}>
     {{data}}
