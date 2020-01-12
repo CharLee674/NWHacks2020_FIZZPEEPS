@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from test import getSentiment
 
-
 app = Flask(__name__)
 app.debug = True
 
@@ -15,9 +14,11 @@ def after_request(response):
 @app.route('/', methods = ['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        return "sentiment: {}".format(getSentiment())
-
-    return render_template("index.html")
+        entry = request.form.get("entry")
+        sentiment = getSentiment(entry)
+        return render_template("index.html", sentiment=sentiment)
+    if request.method == 'GET':
+        return render_template("index.html")
 
 @app.route('/getpost')
 def getpost():

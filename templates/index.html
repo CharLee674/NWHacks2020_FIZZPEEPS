@@ -10,6 +10,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
   -->
+  <link rel="stylesheet" href="static/styles.css">
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,26 +33,24 @@
 
 </head>
 
-<div class="jumbotron">
-  <h1 class="display-3">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
+<div class="split left">
+  <div class="centered">
+    <h2>Journal Entry</h2>
+    <div class="form-group">
+      <form action="/" method="post">
+          <label class="col-form-label" for="inputDefault"></label>
+          <input id="entry" name="entry" type="text" class="form-control" placeholder="Type your thoughts..." size="1">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>
 </div>
 
-  <div class="form-group">
-    <form action="/" method="post">
-        <label class="col-form-label" for="inputDefault"></label>
-        <input id="length" name="length" type="text" class="form-control" placeholder="Type your thoughts..." size="2">
-        <button type="submit" class="btn btn-primary">Change</button>
-    </form>
-</div>
-  
-  
-
-</body>
+<div class="split right">
+  <div class="centered">
+    <img src="img_avatar.png" alt="Avatar man">
+    <h2>Positivity Rating:</h2>
+    <p>{{sentiment}}</p>
+  </div>
+</div> 
 
 </html>
