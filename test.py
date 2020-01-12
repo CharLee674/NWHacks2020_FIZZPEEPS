@@ -3,11 +3,14 @@ from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
 
-def getSentiment():
+def getSentiment(entry):
     # Instantiates a client
     client = language.LanguageServiceClient()
 
     # The text to analyze
+
+    f = open("journal1.txt", "w")
+    f.write(entry)
 
     path = 'journal1.txt'
     f = open(path)
@@ -31,4 +34,4 @@ def getSentiment():
 
     print('Text: {}'.format(text))
     print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
-return sentiment.score
+    return sentiment.score
