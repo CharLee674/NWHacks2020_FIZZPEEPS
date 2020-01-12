@@ -4,6 +4,8 @@ import base64
 from io import BytesIO
 
 from matplotlib.figure import Figure
+import matplotlib.pyplot as plt
+from shutil import copyfile
 
 #Creates an instance of the Flask app under the name 'app'
 app = Flask(__name__)
@@ -21,7 +23,7 @@ def after_request(response):
 def home():
     if request.method == 'POST': #If the user asks for the results
         #Taken from https://matplotlib.org/faq/howto_faq.html#how-to-use-matplotlib-in-a-web-application-server 
-        """# Generate the figure **without using pyplot**.
+        # Generate the figure **without using pyplot**.
         fig = Figure()
         ax = fig.subplots()
         ax.plot([1, 2])
@@ -30,7 +32,17 @@ def home():
         fig.savefig(buf, format="png")
         # Embed the result in the html output.
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return f"<img src='data:image/png;base64,{data}'/>"""
+
+        plt.plot([0, 1, 2, 3, 4], [0, 3, 5, 9, 11])
+        plt.xlabel("x")
+        plt.ylabel("y")
+        #plt.show()
+        plt.savefig("static/graph.png")
+        #copyfile("graph.png", "/static")
+        #return f"<img src='data:image/png;base64,{data}'/>"
+        
+        data = "<img src='data:image/png;base64,{}'/>".format(data)
+        
         #This receives the request from the entry in the page
         entry = request.form.get("entry")
         #This uses the getSentiment function in test.py in our folder
